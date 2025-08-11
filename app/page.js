@@ -1,103 +1,233 @@
-import Image from "next/image";
+'use client';
+
+import Navbar from "@/components/Navbar";
+import Section from "@/components/Section";
+import StackedSection from "@/components/StackedSection";
+import Typewriter from "typewriter-effect";
+import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter, FaReact, FaNodeJs, FaDatabase, FaBrain } from "react-icons/fa";
+import { SiExpress, SiMongodb, SiPython, SiTailwindcss } from "react-icons/si";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="w-full bg-gray-100 overflow-x-hidden">
+      {/* Hero Section */}
+      <div className="relative w-full h-screen overflow-hidden" id="home">
+        <video
+          src="/sky.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="absolute top-0 left-0 w-full z-[999] bg-red-500 backdrop-blur-sm pointer-events-auto">
+          <Navbar />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        
+        <div className="relative z-10 text-white flex flex-col items-center justify-center h-full px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <Typewriter
+              options={{
+                strings: [
+                  "Welcome to My Portfolio",
+                  "Crafting Elegant Web Experiences",
+                  "React & Next.js Enthusiast",
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                deleteSpeed: 30,
+              }}
+            />
+          </h1>
+          <p className="text-lg md:text-xl max-w-2xl text-white/80">
+            I’m a full-stack web developer specializing in creating responsive,
+            interactive, and accessible web applications using modern
+            technologies like React, Next.js, Tailwind CSS, and more.
+          </p>
+        </div>
+      </div>
+
+      {/* About Section */}
+      <Section id="about" className="bg-gray-100 px-4 py-20">
+        <StackedSection>
+          <h2 className="text-3xl font-bold mb-4 text-center">About Me</h2>
+          <p className="text-gray-700 text-lg text-center">
+            I am a passionate developer who loves building clean and scalable
+            UI/UX experiences. From front-end interfaces to full-stack
+            applications, I enjoy solving problems with elegant code.
+          </p>
+        </StackedSection>
+      </Section>
+
+      {/* Skills Section */}
+      <Section id="skills" className="bg-gray-100 px-4 py-20">
+        <StackedSection delay={0.2}>
+          <h2 className="text-3xl font-bold mb-8 text-center">My Skills</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <FaReact className="text-5xl text-blue-500 mb-4" />
+              <span className="font-semibold">React</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <FaNodeJs className="text-5xl text-green-600 mb-4" />
+              <span className="font-semibold">Node.js</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <SiExpress className="text-5xl text-gray-800 mb-4" />
+              <span className="font-semibold">Express</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <SiMongodb className="text-5xl text-green-500 mb-4" />
+              <span className="font-semibold">MongoDB</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <FaBrain className="text-5xl text-red-500 mb-4" />
+              <span className="font-semibold">Machine Learning</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <SiPython className="text-5xl text-blue-400 mb-4" />
+              <span className="font-semibold">Python</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <FaDatabase className="text-5xl text-purple-600 mb-4" />
+              <span className="font-semibold">SQL</span>
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <SiTailwindcss className="text-5xl text-teal-500 mb-4" />
+              <span className="font-semibold">Tailwind CSS</span>
+            </div>
+          </div>
+        </StackedSection>
+      </Section>
+
+      {/* Projects Section */}
+      <Section id="projects" className="bg-gray-100 px-4 py-20">
+        <StackedSection delay={0.3}>
+          <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="h-48 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Project One</h3>
+                <p className="text-gray-600 mb-4">A full-stack web application built with React and Node.js.</p>
+                <div className="flex gap-3 mb-4">
+                  <FaReact className="text-2xl text-blue-500" />
+                  <FaNodeJs className="text-2xl text-green-600" />
+                  <SiMongodb className="text-2xl text-green-500" />
+                </div>
+                <div className="flex gap-4">
+                  <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold">Demo</a>
+                  <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold">Code</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="h-48 bg-gradient-to-r from-green-500 to-teal-500"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Project Two</h3>
+                <p className="text-gray-600 mb-4">ML-powered application using Python and TensorFlow.</p>
+                <div className="flex gap-3 mb-4">
+                  <FaBrain className="text-2xl text-red-500" />
+                  <SiPython className="text-2xl text-blue-400" />
+                </div>
+                <div className="flex gap-4">
+                  <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold">Demo</a>
+                  <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold">Code</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="h-48 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Project Three</h3>
+                <p className="text-gray-600 mb-4">REST API built with Express and MongoDB.</p>
+                <div className="flex gap-3 mb-4">
+                  <SiExpress className="text-2xl text-gray-800" />
+                  <SiMongodb className="text-2xl text-green-500" />
+                </div>
+                <div className="flex gap-4">
+                  <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold">Demo</a>
+                  <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </StackedSection>
+      </Section>
+
+      {/* Contact / Social + Business Enquiry Form */}
+      <Section id="contact" className="bg-gray-100 px-4 py-20">
+        <StackedSection delay={0.4}>
+          <h2 className="text-3xl font-bold mb-6 text-center">Connect With Me</h2>
+
+          {/* Social Links */}
+          <div className="flex justify-center gap-6 mb-8 text-2xl text-blue-600">
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black transition"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black transition"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="mailto:youremail@example.com"
+              className="hover:text-black transition"
+            >
+              <FaEnvelope />
+            </a>
+            <a
+              href="https://twitter.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black transition"
+            >
+              <FaTwitter />
+            </a>
+          </div>
+
+          {/* Business Enquiry Form */}
+          <form className="space-y-4 max-w-xl mx-auto">
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+            <textarea
+              placeholder="Your message or enquiry..."
+              className="w-full px-4 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="5"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+            >
+              Send Enquiry
+            </button>
+          </form>
+        </StackedSection>
+      </Section>
     </div>
   );
 }
