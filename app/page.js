@@ -25,7 +25,7 @@ export default function Home() {
           <Navbar />
         </div>
 
-        
+
         <div className="relative z-10 text-white flex flex-col items-center justify-center h-full px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             <Typewriter
@@ -51,19 +51,57 @@ export default function Home() {
       </div>
 
       {/* About Section */}
-      <Section id="about" className="bg-gray-100 px-4 py-20">
-        <StackedSection>
-          <h2 className="text-3xl font-bold mb-4 text-center">About Me</h2>
-          <p className="text-gray-700 text-lg text-center">
-            I am a passionate developer who loves building clean and scalable
-            UI/UX experiences. From front-end interfaces to full-stack
-            applications, I enjoy solving problems with elegant code.
-          </p>
-        </StackedSection>
+      <Section
+        id="about"
+        className="bg-red-500 w-full h-screen flex items-center justify-center px-4"
+      >
+
+        <div className="w-full h-screen bg-red-400 flex items-center justify-center px-12">
+          {/* Left: Profile Image */}
+          <div className="w-1/2 flex justify-center">
+            <img
+              src="/your-image.jpg"
+              alt="Profile photo"
+              className="w-80 h-80 object-cover rounded-full shadow-2xl border-8 border-white"
+            />
+          </div>
+
+          {/* Right: Details */}
+          <div className="w-1/2 text-white pl-12">
+            <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">Star Bawa</h1>
+            <h2 className="text-2xl font-semibold mb-6 text-white/90">
+              MCA Graduate • Web Developer • AI/ML Enthusiast
+            </h2>
+            <p className="text-lg leading-relaxed mb-8">
+              Passionate about building <span className="font-bold">scalable web apps</span>,
+              exploring <span className="italic">AI projects</span>, and writing clean, logical code.
+              Hackathon participant, researcher, and always curious to learn more.
+            </p>
+
+            {/* Fancy Buttons */}
+            <div className="flex space-x-6">
+              <a
+                href="https://github.com/yourusername"
+                className="px-6 py-3 bg-white text-red-500 rounded-xl text-lg font-semibold shadow-md hover:scale-105 hover:bg-gray-100 transition"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                className="px-6 py-3 bg-white text-red-500 rounded-xl text-lg font-semibold shadow-md hover:scale-105 hover:bg-gray-100 transition"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+
       </Section>
 
+
       {/* Skills Section */}
-      <Section id="skills" className="bg-gray-100 px-4 py-20">
+      <Section id="skills" className="bg-gray-100 px-4 py-20 w-100 h-100 bg bg-red-500">
         <StackedSection delay={0.2}>
           <h2 className="text-3xl font-bold mb-8 text-center">My Skills</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -160,74 +198,31 @@ export default function Home() {
         </StackedSection>
       </Section>
 
-      {/* Contact / Social + Business Enquiry Form */}
-      <Section id="contact" className="bg-gray-100 px-4 py-20">
-        <StackedSection delay={0.4}>
-          <h2 className="text-3xl font-bold mb-6 text-center">Connect With Me</h2>
-
-          {/* Social Links */}
-          <div className="flex justify-center gap-6 mb-8 text-2xl text-blue-600">
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black transition"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black transition"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="mailto:youremail@example.com"
-              className="hover:text-black transition"
-            >
-              <FaEnvelope />
-            </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black transition"
-            >
-              <FaTwitter />
-            </a>
+      <Section id="contact" className="w-full h-screen bg-red-500 flex items-center justify-center px-12">
+        {/* Left: Contact / Social Illustration */}
+        <div className="w-1/2 flex flex-col items-center justify-center">
+          <h2 className="text-5xl font-extrabold mb-6 text-white drop-shadow-lg">Let’s Connect</h2>
+          <div className="flex gap-6 text-4xl text-white/90">
+            <a href="https://github.com/yourusername" target="_blank" rel="noreferrer"><FaGithub /></a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+            <a href="mailto:youremail@example.com"><FaEnvelope /></a>
+            <a href="https://twitter.com/yourusername" target="_blank" rel="noreferrer"><FaTwitter /></a>
           </div>
+        </div>
 
-          {/* Business Enquiry Form */}
-          <form className="space-y-4 max-w-xl mx-auto">
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-            <textarea
-              placeholder="Your message or enquiry..."
-              className="w-full px-4 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              rows="5"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-            >
-              Send Enquiry
+        {/* Right: Enquiry Form */}
+        <div className="w-1/2 pl-12">
+          <form className="bg-white p-8 rounded-2xl shadow-2xl space-y-4">
+            <input type="text" placeholder="Full Name" className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400" />
+            <input type="email" placeholder="Email Address" className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400" />
+            <textarea placeholder="Your message..." rows="5" className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"></textarea>
+            <button type="submit" className="w-full bg-red-500 text-white font-semibold py-3 rounded-lg hover:bg-red-600 transition">
+              Send Message
             </button>
           </form>
-        </StackedSection>
+        </div>
       </Section>
+
     </div>
   );
 }
