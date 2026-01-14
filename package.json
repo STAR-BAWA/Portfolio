@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "portfollio",
   "private": true,
   "version": "0.0.0",
@@ -26,5 +27,31 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "vite": "^7.2.4"
+=======
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.6",
+    "next": "15.4.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "typewriter-effect": "^2.22.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.1",
+    "tailwindcss": "^4"
+>>>>>>> ff9c001d947416d46d6c5a0d605044dc652f8b34
   }
 }
