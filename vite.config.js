@@ -4,4 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Set base path for GitHub Pages deployment
+  // This ensures all assets load correctly at https://star-bawa.github.io/Portfolio/
+  base: '/Portfolio/',
 })
