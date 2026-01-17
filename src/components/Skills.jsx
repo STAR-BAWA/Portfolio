@@ -10,27 +10,30 @@ const Skills = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Simplified title animation
+            // Zoom-in animation for title
             gsap.from(titleRef.current, {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top 80%',
+                    end: 'top 50%',
+                    scrub: 1,
                 },
+                scale: 0.8,
                 opacity: 0,
                 y: 20,
-                duration: 0.6,
                 ease: 'power2.out'
             })
 
-            // Simplified skill categories animation
+            // Zoom-in animation for skill categories
             gsap.from('.skill-category', {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top 70%',
                 },
+                scale: 0.85,
                 y: 30,
                 opacity: 0,
-                duration: 0.6,
+                duration: 0.8,
                 stagger: 0.15,
                 ease: 'power2.out'
             })

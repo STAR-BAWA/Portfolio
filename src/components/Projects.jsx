@@ -37,29 +37,46 @@ const Projects = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Simplified title animation
+            // Zoom-in animation for section title
             gsap.from('.projects-title', {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top 80%',
+                    end: 'top 50%',
+                    scrub: 1,
                 },
+                scale: 0.8,
                 opacity: 0,
                 y: 20,
-                duration: 0.6,
                 ease: 'power2.out'
             })
 
-            // Simplified project cards animation
+            // Zoom-in + slide-up animation for project cards
             gsap.from('.project-card', {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top 70%',
                 },
+                scale: 0.85,
                 y: 30,
                 opacity: 0,
-                duration: 0.6,
+                duration: 0.8,
                 stagger: 0.15,
                 ease: 'power2.out'
+            })
+
+            // Add parallax zoom effect on each card
+            gsap.utils.toArray('.project-card').forEach((card) => {
+                gsap.to(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1,
+                    },
+                    scale: 1.05,
+                    ease: 'none'
+                })
             })
         }, sectionRef)
 

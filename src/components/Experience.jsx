@@ -9,6 +9,20 @@ const Experience = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Zoom-in animation for entire section
+            gsap.from(sectionRef.current, {
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 90%',
+                    end: 'top 50%',
+                    scrub: 1,
+                },
+                scale: 0.85,
+                opacity: 0,
+                ease: 'power2.out'
+            })
+
+            // Existing experience items animation
             gsap.from('.experience-item', {
                 scrollTrigger: {
                     trigger: sectionRef.current,

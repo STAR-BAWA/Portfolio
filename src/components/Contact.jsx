@@ -12,6 +12,19 @@ const Contact = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Zoom-in animation for entire section
+            gsap.from(contactRef.current, {
+                scrollTrigger: {
+                    trigger: contactRef.current,
+                    start: 'top 85%',
+                    end: 'top 55%',
+                    scrub: 1,
+                },
+                scale: 0.9,
+                opacity: 0,
+                ease: 'power2.out'
+            })
+
             // Animate title
             gsap.from(titleRef.current, {
                 scrollTrigger: {
@@ -37,17 +50,17 @@ const Contact = () => {
                 ease: 'power2.out'
             })
 
-            // Animate button with bounce
+            // Animate button with bounce and zoom
             gsap.from(buttonRef.current, {
                 scrollTrigger: {
                     trigger: contactRef.current,
                     start: 'top 70%',
                 },
                 opacity: 0,
-                scale: 0.8,
+                scale: 0.5,
                 duration: 0.8,
                 delay: 0.4,
-                ease: 'back.out(1.4)'
+                ease: 'back.out(1.7)'
             })
         }, contactRef)
 

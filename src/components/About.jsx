@@ -9,14 +9,17 @@ const About = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Zoom-in animation for about text
             gsap.from('.about-text', {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: 'top 70%',
+                    end: 'top 40%',
+                    scrub: 1,
                 },
+                scale: 0.9,
                 y: 50,
                 opacity: 0,
-                duration: 1,
                 ease: 'power3.out'
             })
         }, containerRef)

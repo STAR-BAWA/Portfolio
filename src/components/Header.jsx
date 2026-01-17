@@ -82,7 +82,24 @@ const Header = () => {
             borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
             <div ref={logoRef} className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-                <Link to="/" style={{ color: 'var(--text-color)' }}>Portfolio</Link>
+                <Link to="/" style={{
+                    color: 'var(--text-color)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.3rem',
+                    letterSpacing: '0.5px'
+                }}>
+                    <span style={{
+                        background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        fontWeight: '800',
+                        fontSize: '1.6rem'
+                    }}>
+                        {'<'}STAR.DEV{' />'}
+                    </span>
+                </Link>
             </div>
             <nav>
                 <nav ref={navRef} style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
