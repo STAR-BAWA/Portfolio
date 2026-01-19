@@ -37,35 +37,42 @@ const Projects = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Zoom-in animation for section title
-            gsap.from('.projects-title', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 80%',
-                    end: 'top 50%',
-                    scrub: 1,
-                },
-                scale: 0.8,
-                opacity: 0,
-                y: 20,
-                ease: 'power2.out'
+            gsap.fromTo('.projects-title',
+                { scale: 0.8, opacity: 0, y: 20 },
+                {
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 80%',
+                        end: 'top 50%',
+                        scrub: 1,
+                    },
+                    scale: 1,
+                    opacity: 1,
+                    y: 0,
+                    ease: 'power2.out'
+                }
+            )
+
+            const cards = gsap.utils.toArray('.project-card');
+            cards.forEach((card, i) => {
+                gsap.fromTo(card,
+                    { scale: 0.85, y: 30, opacity: 0 },
+                    {
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: 'top 75%',
+                        },
+                        scale: 1,
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        delay: i * 0.15,
+                        ease: 'power2.out',
+                        overwrite: 'auto'
+                    }
+                )
             })
 
-            // Zoom-in + slide-up animation for project cards
-            gsap.from('.project-card', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 70%',
-                },
-                scale: 0.85,
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: 'power2.out'
-            })
-
-            // Add parallax zoom effect on each card
             gsap.utils.toArray('.project-card').forEach((card) => {
                 gsap.to(card, {
                     scrollTrigger: {
@@ -84,40 +91,35 @@ const Projects = () => {
     }, [])
 
     return (
-        <section ref={sectionRef} id="projects" className="section" style={{ minHeight: '100vh' }}>
-            <div className="container">
-                <h2 className="projects-title" style={{
-                    fontSize: 'clamp(2rem, 5vw, 4rem)',
-                    marginBottom: '4rem',
-                    borderBottom: '1px solid #333',
-                    paddingBottom: '1rem'
-                }}>Selected Work</h2>
+        <section
+            ref={sectionRef}
+            id="projects"
+            className="py-12 md:py-16 lg:py-24 min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors duration-300"
+        >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="projects-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-16 border-b border-gray-200 dark:border-gray-800 pb-4 text-gray-900 dark:text-white transition-colors duration-300">
+                    Selected Work
+                </h2>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                    gap: '2rem'
-                }}>
-                    {projectsData.map((project, index) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {projectsData.map((project) => (
                         <div
                             key={project.id}
-                            className="project-card"
-                            style={{ cursor: 'pointer' }}
+                            className="project-card group cursor-pointer"
                         >
-                            <div style={{
-                                height: '300px',
-                                backgroundColor: '#1a1a1a',
-                                marginBottom: '1rem',
-                                overflow: 'hidden',
-                                borderRadius: '8px'
-                            }}>
-                                <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
-                                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                            <div className="h-64 md:h-72 lg:h-80 bg-gray-100 dark:bg-dark-secondary mb-4 overflow-hidden rounded-lg transition-colors duration-300">
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                             </div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{project.title}</h3>
-                            <p style={{ color: '#888' }}>{project.category}</p>
+                            <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white transition-colors duration-300">
+                                {project.title}
+                            </h3>
+                            <p className="text-gray-500 text-sm md:text-base">
+                                {project.category}
+                            </p>
                         </div>
                     ))}
                 </div>

@@ -22,15 +22,10 @@ export const ThemeProvider = ({ children }) => {
 
     const applyTheme = (newTheme) => {
         const root = document.documentElement
-
         if (newTheme === 'dark') {
-            root.style.setProperty('--bg-color', '#050505')
-            root.style.setProperty('--text-color', '#f0f0f0')
-            root.style.setProperty('--secondary-color', '#1a1a1a')
+            root.classList.add('dark')
         } else {
-            root.style.setProperty('--bg-color', '#ffffff')
-            root.style.setProperty('--text-color', '#1a1a1a')
-            root.style.setProperty('--secondary-color', '#f5f5f5')
+            root.classList.remove('dark')
         }
     }
 

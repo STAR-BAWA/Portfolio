@@ -9,7 +9,6 @@ const About = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Zoom-in animation for about text
             gsap.from('.about-text', {
                 scrollTrigger: {
                     trigger: containerRef.current,
@@ -27,15 +26,22 @@ const About = () => {
     }, [])
 
     return (
-        <section id="about" className="section" ref={containerRef} style={{ background: '#0f0f0f' }}>
-            <div className="container">
-                <h2 style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', marginBottom: '3rem' }}>About Me</h2>
-                <div className="about-text" style={{ fontSize: 'clamp(1.2rem, 2vw, 2rem)', maxWidth: '1000px', lineHeight: '1.4' }}>
-                    <p style={{ marginBottom: '2rem' }}>
+        <section
+            id="about"
+            className="py-12 md:py-16 lg:py-24 bg-white dark:bg-dark-tertiary transition-colors duration-300"
+            ref={containerRef}
+        >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 md:mb-12 text-gray-900 dark:text-white transition-colors duration-300">
+                    About Me
+                </h2>
+
+                <div className="about-text text-lg md:text-xl lg:text-2xl max-w-4xl leading-relaxed">
+                    <p className="mb-6 md:mb-8 text-gray-700 dark:text-gray-300 transition-colors duration-300">
                         I am a passionate developer designed to bring creative ideas to life on the web.
                         I specialize in building clean, modern, and interactive experiences using the latest web technologies.
                     </p>
-                    <p>
+                    <p className="text-gray-700 dark:text-gray-300 transition-colors duration-300">
                         With a focus on performance and accessibility, I ensure that every project I touch is not only visually stunning but also technically sound.
                     </p>
                 </div>

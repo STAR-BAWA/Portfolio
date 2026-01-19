@@ -2,8 +2,10 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer style={{ padding: '2rem', textAlign: 'center', marginTop: '4rem' }}>
-            <p>&copy; {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+        <footer className="py-8 md:py-12 text-center mt-16 border-t border-gray-800">
+            <p className="text-gray-400 text-sm md:text-base">
+                © {new Date().getFullYear()} STAR BAWA. All rights reserved.
+            </p>
         </footer>
     )
 }

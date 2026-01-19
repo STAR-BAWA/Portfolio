@@ -34,7 +34,31 @@ const Hero = () => {
                     ease: 'power2.out'
                 }, '-=0.3')
 
-            // Zoom scroll animation
+            // Animate floating polygons
+            gsap.to('.hero-polygon', {
+                y: -20,
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                stagger: {
+                    amount: 2,
+                    from: 'random'
+                }
+            })
+
+            gsap.to('.hero-polygon', {
+                rotation: 10,
+                duration: 6,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                stagger: {
+                    amount: 3,
+                    from: 'random'
+                }
+            })
+
             gsap.to(heroRef.current, {
                 scrollTrigger: {
                     trigger: heroRef.current,
@@ -52,101 +76,71 @@ const Hero = () => {
     }, [])
 
     return (
-        <section ref={heroRef} id="home" className="section" style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-            paddingTop: '0'
-        }}>
-            <div style={{ overflow: 'hidden' }}>
-                <h1 ref={titleRef} style={{
-                    fontSize: 'clamp(3rem, 10vw, 8rem)',
-                    fontWeight: '700',
-                    lineHeight: 1,
-                    marginBottom: '1rem',
-                    letterSpacing: '-0.02em'
-                }}>
+        <section
+            ref={heroRef}
+            id="home"
+            className="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-28 md:pt-32 lg:pt-40 pb-16 relative overflow-hidden"
+        >
+            {/* Decorative Polygons */}
+            <div
+                className="hero-polygon absolute top-20 right-[10%] w-64 h-64 rounded-full pointer-events-none"
+                style={{
+                    clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)',
+                    background: 'rgba(16, 185, 129, 0.4)', // Increased opacity for brightness
+                    filter: 'blur(40px)',
+                    zIndex: 0
+                }}
+            />
+            <div
+                className="hero-polygon absolute bottom-20 left-[10%] w-96 h-96 rounded-full pointer-events-none"
+                style={{
+                    clipPath: 'polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)',
+                    background: 'rgba(52, 211, 153, 0.3)', // Increased opacity
+                    filter: 'blur(40px)',
+                    zIndex: 0
+                }}
+            />
+            <div
+                className="hero-polygon absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+                style={{
+                    background: 'radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(0,0,0,0) 70%)',
+                    zIndex: -1
+                }}
+            />
+
+            <div className="overflow-hidden relative z-10">
+                <h1
+                    ref={titleRef}
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none mb-4 md:mb-6 tracking-tight text-gray-900 dark:text-white transition-colors duration-300"
+                >
                     STAR <br /> BAWA
                 </h1>
             </div>
-            <div style={{ overflow: 'hidden' }}>
-                <p ref={subtitleRef} style={{
-                    fontSize: 'clamp(1rem, 2vw, 1.5rem)',
-                    color: '#bbb',
-                    maxWidth: '600px',
-                    margin: '0 auto 2rem'
-                }}>
+
+            <div className="overflow-hidden relative z-10">
+                <p
+                    ref={subtitleRef}
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 px-4 transition-colors duration-300"
+                >
                     IT Assistant & Creative Developer | Lucknow, India
                 </p>
             </div>
-            <div ref={ctaRef} style={{ marginTop: '2rem', display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="#projects" style={{
-                    padding: '1rem 2rem',
-                    border: '1px solid var(--text-color)',
-                    borderRadius: '50px',
-                    fontSize: '1rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    transition: 'all 0.3s ease'
-                }}
-                    onMouseEnter={(e) => {
-                        e.target.style.background = 'var(--text-color)'
-                        e.target.style.color = 'var(--bg-color)'
-                    }}
-                    onMouseLeave={(e) => {
-                        e.target.style.background = 'transparent'
-                        e.target.style.color = 'var(--text-color)'
-                    }}
+
+            <div
+                ref={ctaRef}
+                className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center w-full max-w-2xl px-4 relative z-10"
+            >
+                <a
+                    href="#projects"
+                    className="btn-outline flex-1 sm:flex-initial min-w-[160px] text-center text-sm md:text-base bg-white/50 dark:bg-dark/50 backdrop-blur-sm transition-colors duration-300"
                 >
                     View Work
                 </a>
-                {/* 
-                    RESUME DOWNLOAD BUTTON
-                    
-                    Scalability Notes:
-                    - This resume is served as a static file from /public/Star_Bawa.pdf
-                    - When deployed to Vercel/Netlify, this file is automatically served via global CDN
-                    - CDN (Content Delivery Network) means the PDF is cached at 100+ locations worldwide
-                    
-                    How it handles 1M+ downloads WITHOUT crashing:
-                    1. User clicks download → Request goes to nearest CDN edge server
-                    2. CDN serves cached PDF (doesn't hit your origin server)
-                    3. Only first request per region hits origin, rest served from cache
-                    4. Result: Supports millions of concurrent downloads
-                    
-                    Alternative for EXTREME scale (10M+ downloads/month):
-                    - Upload PDF to AWS S3 or Google Cloud Storage
-                    - Enable CloudFront/CDN on storage bucket
-                    - Update href to: "https://cdn.yourdomain.com/resume.pdf"
-                    - Cost: ~$1 per 100,000 downloads
-                    
-                    Current setup (Vercel free tier) handles up to millions of downloads/month at $0 cost
-                */}
+
                 <a
                     href="/Star_Bawa.pdf"
                     download="Star_Bawa_Resume.pdf"
-                    style={{
-                        padding: '1rem 2rem',
-                        background: 'linear-gradient(135deg, var(--primary-color), var(--accent-color))',
-                        color: 'white',
-                        borderRadius: '50px',
-                        fontSize: '1rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: '1px',
-                        transition: 'all 0.3s ease',
-                        boxShadow: '0 10px 25px rgba(124, 58, 237, 0.3)'
-                    }}
-                    onMouseEnter={(e) => {
-                        e.target.style.transform = 'translateY(-3px)'
-                        e.target.style.boxShadow = '0 15px 35px rgba(124, 58, 237, 0.5)'
-                    }}
-                    onMouseLeave={(e) => {
-                        e.target.style.transform = 'translateY(0)'
-                        e.target.style.boxShadow = '0 10px 25px rgba(124, 58, 237, 0.3)'
-                    }}
+                    className="btn-primary flex-1 sm:flex-initial min-w-[160px] text-center text-sm md:text-base shadow-xl shadow-primary/30"
                 >
                     📄 Download Resume
                 </a>
